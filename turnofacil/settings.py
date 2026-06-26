@@ -3,6 +3,10 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Crear automáticamente la carpeta de logs
+LOGS_DIR = BASE_DIR / "logs"
+LOGS_DIR.mkdir(parents=True, exist_ok=True)
+
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-turnofacil-change-this-in-production')
 
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
@@ -151,7 +155,7 @@ LOGGING = {
         'file': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
-            'filename': BASE_DIR / 'logs/errores.log',
+            'filename': LOGS_DIR / 'errores.log',
             'formatter': 'verbose',
         },
         'console': {
