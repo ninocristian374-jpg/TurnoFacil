@@ -190,3 +190,10 @@ MESSAGE_TAGS = {
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+
+CSRF_TRUSTED_ORIGINS = os.environ.get(
+    "CSRF_TRUSTED_ORIGINS",
+    "https://web-production-28e83.up.railway.app"
+).split(",")
